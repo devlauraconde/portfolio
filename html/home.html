@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Laura Conde</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link 
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;display=swap" 
+        rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href=".././css/styles.css">
+</head>
+
+<body>
+
+    <header>
+        <!-- id e class abaixo para o botao de menu a utilizar no JavaScript. aria-expanded é um atributo de acessibilidade usado para indicar se um conteúdo está expandido ou recolhido (escondido). normalmente utilizado para botões. 
+        Quando o menu está fechado , aria-expanded: false
+        Quando o menu abre , muda para aria-expanded: true
+        E aria-label é para os audovisuais lerem no console o que é. neste caso trata-se de um menu de navegação 
+        aria-controls: qual é o conteudo que o botao controla  -->
+        <button 
+        id="menuBtn" 
+        class="menu-btn" 
+        aria-expanded="false" 
+        aria-label="Navigation Menu"
+        aria-controls="mobileNav"
+        >
+            <!-- aqui está o texto do icon de abrir o menu com o id -->
+            <svg 
+                id="openIcon" 
+                xmlns="http://www.w3.org/2000/svg" 
+                height="24" 
+                viewBox="0 -960 960 960" 
+                width="24"
+            >
+                <path
+                    d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z">              
+                </path>
+            </svg>
+            <!-- aqui está o texto do icon de fechar o menu com o id-->
+            <svg 
+                id="closeIcon"
+                xmlns="http://www.w3.org/2000/svg" 
+                height="24" 
+                viewBox="0 -960 960 960" 
+                width="24"
+            >
+                <path 
+                    d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z">
+                </path>
+            </svg>
+        </button>
+
+        <!-- em baixo no <nav> colocamos o id do aria-controls do button 'Navigation Menu' 
+        O 'aria-hidden' é quando queremos que alguma interação esteja escondida, por exemplo, neste caso iremos por os toppings do menu de navegacao quando clicamos nele-->
+        <nav id="mobileNav" class="mobile-nav" aria-hidden="true"> 
+            <!-- aqui dentro está o header com o meu nome e o botao de menu de cima.
+            criei o href de hero para direcionar para a pagina principal hero para quando se carregar em Laura Conde -->
+            <div class="left-position"> 
+                <a href="#home">Laura Conde</a>
+            </div>
+            <ul> 
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#art">Art</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <nav class="desktop-nav"> 
+            <!-- aqui igual, mas para o desktop, quando o ecra está maior e nao tem botao de navegacao, aparecem as palavras. tirámos o id e aria-hidden-->
+            <div class="left-position"> 
+                <a href="#home">Laura Conde</a>
+            </div>
+            <ul> 
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#art">Art</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- abaixo iremos por o conteudo da pagina inicial que estipulei. 
+         foto, apresentação, botao para me contactarem... -->
+        <section id="home" class="hero-container">
+
+            <!-- o texto de apresentação tem a class hero-text-container -->
+            <div class="hero-text-container">
+                <p>FRONT-END</p>
+                <p>DEVELOPER & ARCHITECT</p>
+                <p>BASED IN AMSTERDAM, NETHERLANDS</p>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+
+        <!-- abaixo estå o que vai aparecer quando se carrega no about do header do menu de navegacao -->
+        <section id="about" class="about-container">
+            
+            <p class="body-text">
+                Architect with 5 years of experience. Now transitioning into <strong>Web-Development</strong> with a strong focus on <strong>Frontend.</strong><br>
+                After years of designing physical spaces, I discovered a passion for crafting digital experiences - where <strong>creativity, logic, and user-centered design</strong> come together.<br>
+                My background gives me a unique prespective on structure, aesthetics, and problem-solving, which I now apply to building intuitive and engaging web interfaces. <br>
+                <br>
+                If you would like to learn more about my background, feel free to <strong>watch the video!!</strong>
+            </p>
+
+            <!-- abaixo fiz com que o ao clicar no botao descarregue o meu resume -->
+            <a href=".././images/cv-laura-conde.pdf" class="btn" download="Resume-LauraConde.pdf" type="button">
+                Download my Resume
+            </a>
+
+            <div class="video-container">
+                <video width="640" height="360" controls>
+                    <source src=".././video/presentation.mp4" type="video/mp4">
+                </video>
+            </div>
+
+        </section>
+
+        <!-- PROJECTS -->
+
+        <!-- abaixo estå o que vai aparecer quando se carrega no projects do header do menu de navegacao -->
+        <section id="projects" class="all-projects-container">
+            <div class="section-square"></div>
+            <h2>PROJECTS</h2>
+
+        <!-- PROJECT 2xs -->
+        <article class="project-container">
+            <!-- Abaixo tenho de meter a imagem do meu projeto - 2 -->
+            <div class="project-img-container">
+                <div class="project-img"></div>
+                <img
+                    src=".././images/projects/ep-peniche.png"
+                    alt="ep-peniche"
+                />
+                </img>
+            </div>
+            <!-- Abaixo tenho de meter a descricao do meu projeto - 2 -->
+            <div class="project-text-container">
+                <!-- titulo do projeto -->
+                <h3><strong>Collaborative Development Experience</strong></h3>
+                <!-- abaixo tenho a aparecer as linguagens que utilizei neste projecto -->
+                <div class="project-techs">
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JavaScript</span>
+                    <span>React (Next.js)</span>
+                </div>
+                <!-- descricao do projeto -->
+                <p class="body-text">
+                    I have been actively participating in the development of a website project for a friend, where I am responsible for completing specific tasks assigned to me through <strong>Linear</strong>.<br>
+
+                    In this project, I work with technologies such as <strong>JavaScript, CSS</strong>, and <strong>React (Next.js)</strong> to implement features and fix issues. I also use <strong>GitHub</strong> to push my completed tasks, which are then reviewed before being merged into the main project.<br>
+
+                    This collaboration follows an <strong>agile-like workflow</strong>, focusing on task management, code reviews, and continuous integration. <br>
+                    <br>
+                    Through this experience, I have strengthened my skills in <strong>frontend development, version control</strong>, and <strong>team-based workflows</strong> within a real-world environment.
+                </p>
+                <!-- abaixo estao os botoes que ao clicar nos enviam para o site real que criei e o github. quando tiver sites feitos, posso por no # o link do site e do gitHub correspondente -->
+                <div>
+                    <a 
+                        href="https://www.eppeniche.pt/" 
+                        target="_blank" 
+                        class="btn">Live Site
+                    </a>
+                </div>
+            </div>
+        </article>
+
+            <!-- PROJECT 1 -->
+            <article class="project-container">
+                <!-- Abaixo tenho de meter a imagem do meu projeto - 1 -->
+                <div class="project-img-container">
+                    <div class="project-img"></div>
+                    <img
+                        src=".././images/projects/coya-house.png"
+                        alt="project - Coya House"
+                    />
+                    </img>
+                </div>
+                <!-- Abaixo tenho de meter a descricao do meu projeto - 1 -->
+                <div class="project-text-container">
+                    <!-- titulo do projeto -->
+                    <h3><strong>COYA HOUSE — A Study in Aesthetic Alignment and Visual Harmony</strong></h3>
+                    <!-- abaixo tenho a aparecer as linguagens que utilizei neste projecto -->
+                    <div class="project-techs">
+                        <span>AutoCad</span>
+                        <span>SkethUp</span>
+                        <span>Lumion</span>
+                        <span>Photoshop</span>
+                    </div>
+                    <!-- descricao do projeto -->
+                    <p class="body-text">
+                        The <em>Coya House</em> project represents a masterful balance of <strong>form, proportion</strong>, and <strong>spatial rhythm</strong>. Its <stong>clean lines</stong>, deliberate <strong>alignments</strong>, and fluid interaction between interior and exterior spaces create an architecture of <strong>calm precision</strong>. <br>
+                        
+                        For me as a web developer, this architectural approach deeply resonates with essential principles of <strong>design</strong> and <strong>front-end development: structure, clarity, and user-focused aesthetics</strong>. <br>
+
+                        Much like a well-organized website layout, the house’s floor plans demonstrate careful attention to <strong>alignment</strong> and <strong>modular consistency</strong>. The interplay of open and closed spaces mirrors the way digital interfaces must balance <strong>information</strong> and <strong>whitespace</strong>. The minimal material palette and the thoughtful repetition of elements reflect the kind of <strong>visual coherence</strong> that defines a strong, accessible web experience. <br>
+
+                        Much like a well-organized website layout, the house’s floor plans demonstrate careful attention to <strong>alignment</strong> and <strong>modular consistency</strong>. The interplay of open and closed spaces mirrors the way digital interfaces must balance <strong>information</strong> and <strong>whitespace</strong>. The minimal material palette and the thoughtful repetition of elements reflect the kind of <strong>visual coherence</strong> that defines a strong, accessible web experience. <br>
+                            
+                        Working with projects like <em>Coya House</em> strengthens my eye for <strong>detail</strong>, enhances my understanding of <strong>grids</strong> and <strong>visual flow</strong>, and sharpens my ability to create digital experiences that feel as natural and intuitive as beautifully designed physical spaces.
+                    </p>
+                    <p class="body-text-detail"> 
+                        Architecture teaches us to build <strong>spaces that feel right.</strong> Coya House sharpened my eye for <strong>clean layouts, visual harmony, and user-first digital design.</strong>
+                    </p>
+                </div>
+            </article>
+
+            
+        </section>
+
+        <!-- ART -->
+        <!-- abaixo estå o que vai aparecer quando se carrega no arts do header do menu de navegacao -->
+        <section id="art" class="all-art-container">
+            <h2>My Arts</h2>
+            <div class="arts-wrapper">
+
+            <!-- ART 1 -->
+                <!-- Abaixo tenho de meter a imagem da art - 1 -->
+                <div class="art-img-container">
+                    <div class="art-img"></div>
+                    <img
+                        src=".././images/art/column.png"
+                        alt="column drawing"
+                    />
+                    </img>
+                </div>
+
+            <!-- ART 2 -->
+                <!-- Abaixo tenho de meter a imagem da art - 2 -->
+                <div class="art-img-container">
+                    <div class="art-img"></div>
+                    <img
+                        src=".././images/art/roma.png"
+                        alt="roma drawing"
+                    />
+                    </img>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact" class="contact-container">
+            <p>LET'S CONNECT AND CREATE TOGETHER</p>
+            <!-- abaixo vou criar o botão que ao clicar vai abrir a caixa para enviar um email para mim -->
+            <div>
+                <a href="mailto:devlauraconde@gmail.com" class="contact-btn">CLICK HERE TO CONTACT ME</a>
+            </div>
+            <!-- social media icons-->
+            <div class="socials-container">
+
+                <!-- instagram -->
+                <a href="http://instagram.com/lauraconde/">
+                    <svg 
+                        xmlns="http://www.w3.org/2000/svg" 
+                        viewBox="0 0 31.15 31.14" 
+                        xmlns:v="https://vecta.io/nano"
+                    >
+                        <path 
+                            d="M15.58 0l7.36.16c1.65.16 3.22.6 4.59 1.59 1.87 1.35 2.9 3.2 3.31 5.44.25 1.38.28 2.78.29 4.17.03 3.42.07 6.85-.05 10.27-.05 1.28-.19 2.56-.62 3.77-.98 2.74-2.9 4.46-5.69 5.22-1.62.44-3.29.46-4.95.47-3.48.03-6.97.07-10.45-.06-1.25-.05-2.49-.19-3.67-.62-2.72-.99-4.44-2.89-5.19-5.67-.44-1.63-.46-3.31-.47-4.98C.01 16.3-.03 12.84.1 9.38c.05-1.26.19-2.51.62-3.7C1.69 2.97 3.6 1.25 6.38.49 8.08.03 9.83.04 11.57.01c1.34-.02 2.68 0 4.01 0zm12.75 15.56v-3.94c-.03-1.34-.01-2.68-.26-4-.36-1.94-1.38-3.37-3.22-4.16-1.01-.43-2.09-.55-3.18-.59-3.4-.13-6.8-.09-10.21-.06-1.28.01-2.56.02-3.83.26-1.94.37-3.37 1.38-4.16 3.22-.43 1.01-.54 2.09-.58 3.18-.12 3.4-.09 6.8-.06 10.21.01 1.28.02 2.56.26 3.83.37 1.94 1.39 3.37 3.23 4.15 1 .42 2.07.54 3.15.58 3.41.13 6.83.09 10.24.06 1.27-.01 2.54-.02 3.79-.25 1.2-.23 2.25-.71 3.11-1.6 1.03-1.06 1.44-2.37 1.57-3.79.22-2.36.13-4.73.14-7.09zm-4.76-.01a8.01 8.01 0 0 1-7.98 8 8.01 8.01 0 0 1-8-7.98 8.01 8.01 0 0 1 7.98-8 8.01 8.01 0 0 1 8 7.98zm-7.95-5.18c-2.83-.05-5.16 2.24-5.23 5.12-.06 2.84 2.25 5.2 5.14 5.25 2.83.05 5.16-2.24 5.23-5.12.06-2.84-2.25-5.2-5.14-5.25zm8.27-4.99c1.03 0 1.87.83 1.87 1.87 0 1.03-.83 1.87-1.87 1.87a1.86 1.86 0 0 1-1.87-1.87c0-1.03.83-1.87 1.87-1.87z"
+                        />
+                    </svg>
+                </a>
+
+                <!-- linkedin -->
+                <a href="http://linkedin.com/in/arqlauraconde/">
+                    <svg 
+                        xmlns="http://www.w3.org/2000/svg" 
+                        viewBox="0 0 30.82 30.82" 
+                        xmlns:v="https://vecta.io/nano"
+                    >
+                        <path 
+                            d="M0 28.11V2.71c.03-.08.07-.16.08-.25C.18 1.32 1.16.27 2.28.09L2.71 0h25.4c.08.03.16.07.25.08 1.14.1 2.2 1.08 2.37 2.2.02.14.06.29.09.43v25.4c-.03.08-.07.16-.08.25-.1 1.14-1.08 2.2-2.2 2.37-.14.02-.29.06-.43.09H2.71c-.08-.03-.16-.07-.25-.08-1.14-.1-2.2-1.08-2.37-2.2-.02-.14-.06-.29-.09-.43zm16.94-14.9v-1.02c0-.58-.32-.9-.88-.9h-3.37c-.58 0-.91.32-.91.91v14.32c0 .61.33.94.95.94h3.25c.65 0 .96-.31.96-.95v-7.28c0-.83.18-1.61.54-2.35.47-.96 1.36-1.46 2.48-1.39 1.03.06 1.75.62 2.11 1.65.25.7.29 1.43.29 2.16l-.02 4.93.02 2.38c.02.59.33.86.93.86h3.37c.65 0 .98-.32.98-.98l-.06-8.72c-.02-1.18-.2-2.35-.65-3.46-.48-1.19-1.23-2.17-2.43-2.7-1.78-.77-3.6-.75-5.42-.12-.88.3-1.55.9-2.14 1.72zM4.43 19.39v7.07c0 .69.32 1.01 1.01 1.02h3.04c.8 0 1.11-.31 1.11-1.11v-7.94-6.11c0-.69-.33-1.02-1.01-1.02H5.42c-.68 0-.99.31-.99.99v7.1zm5.89-12.7c0-1.83-1.5-3.34-3.32-3.32A3.29 3.29 0 0 0 3.69 6.7C3.68 8.53 5.2 10.01 7 10.02a3.35 3.35 0 0 0 3.33-3.33z"
+                        />
+                    </svg>
+                </a>
+
+                <!-- gitHub -->
+                <a href="https://github.com/devlauraconde">
+                    <svg 
+                        xmlns="http://www.w3.org/2000/svg" 
+                        viewBox="0 0 31.32 30.82" 
+                        xmlns:v="https://vecta.io/nano"
+                    >
+                        <path 
+                            d="M18.58 22.82l2.43-.57c2.6-.78 4.05-2.58 4.49-5.22.22-1.33.29-2.67-.11-3.99-.23-.76-.59-1.45-1.11-2.05a.49.49 0 0 1-.12-.56c.37-1.24.26-2.46-.18-3.66-.04-.12-.26-.27-.37-.26-.52.07-1.07.13-1.55.33-.76.32-1.47.77-2.21 1.14-.16.08-.38.13-.54.09a15.28 15.28 0 0 0-7.24 0 .86.86 0 0 1-.57-.09c-1.04-.64-2.09-1.25-3.33-1.44-.67-.1-.74-.07-.92.57-.33 1.13-.38 2.27-.04 3.42.03.11 0 .28-.06.36-1.41 1.67-1.65 3.62-1.37 5.69.18 1.33.56 2.57 1.4 3.64 1.07 1.35 2.54 1.99 4.17 2.33l1.42.25c-.52.57-.79 1.21-.92 1.92-.02.1-.15.22-.25.27-1.74.75-3.3.25-4.31-1.37-.52-.83-1.21-1.45-2.21-1.62-.19-.03-.4-.02-.59.02-.4.09-.45.3-.16.59a1.35 1.35 0 0 0 .35.28 3.57 3.57 0 0 1 1.63 1.98c.61 1.83 2.39 2.61 4.31 2.43l1.16-.14-.01 3.01c-.02.55-.55.81-1.15.6-1.36-.46-2.64-1.09-3.81-1.93C2.15 25.45-.15 20.88 0 15.16.21 7.8 5.67 1.55 12.91.25c8.42-1.52 16.51 4.09 18.12 12.55 1.47 7.7-2.87 15.31-10.19 17.9-.88.31-1.31 0-1.3-.93l.02-3.92c0-1.12-.17-2.18-.98-3.03z"
+                        />
+                    </svg>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <span>Laura Conde 2025&copy;</span>
+    </footer>
+
+    <script src="./js/app.js"></script>
+</body>
+</html>
+
+

@@ -1,0 +1,674 @@
+/* PRESETS */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+@font-face {
+    font-family: 'Monument Extended Ultrabold'; /* Nome correto da fonte */
+    src: url('../fonts/MonumentExtended-Ultrabold.otf') format('opentype');
+    font-weight: 800; /* Opcional: 800 é ultrabold */
+    font-style: normal;
+}
+
+/* VARIABLES */
+ :root {
+    --body-bg: rgb(237, 237, 236);
+    --main-text-color: rgb(157, 70, 71);/* diferente */
+    --shadow-text-color: rgb(111, 52, 53);/* diferente */
+    --shadow-text-color-secondary: rgb(118, 107, 107);/* diferente */
+
+    --hue-rotate: calc(-78deg);
+    --saturate: 1.5;
+    --base-font-size: 1.25vw;
+    --gutter-size: 2vw;
+    --height-space: 20vh;
+
+    font-family:"Inter", sans-serif;
+    scroll-behavior: smooth;
+ }   
+
+
+#closeIcon {
+    display: none; /* Quando aplicas display: none a um elemento, ele desaparece da visualização, mas também não ocupa espaço no layout da página, ou seja, ele é completamente removido do fluxo de layout. */
+}
+
+/* BASE STYLES */
+
+body {
+    background-color: white;
+}
+
+main { 
+    display: flex; /* faz com que o elemento <main> se torne um flex container. Isso significa que todos os elementos filhos diretos de <main> serão organizados como itens flexíveis (flex items), ou seja, o layout será controlado usando o modelo de Flexbox. */
+    flex-direction: column;
+    align-items: center;
+    padding: 3rem 1rem;
+    padding-top: 0;
+    width:100%;
+}
+
+header,
+main,
+footer {
+    max-width: 1300px;
+    margin-inline: auto;
+    padding-inline: 3rem;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1400px;
+    width: 100%;
+}
+
+h2 {
+    font-family: 'Monument Extended Ultrabold';
+    letter-spacing: 2px;
+    text-align: left;
+    font-size: 2em;
+    color: var(--main-text-color);
+    margin-bottom: 2rem;
+}
+
+h3 {
+    font-size: 1.1rem;
+    color: black;
+    margin-bottom: 0.5rem;
+}
+
+li {
+    list-style: none; /* tem a ver com header. deixar assim*/
+}
+
+a {
+    text-decoration: none; /* tem a ver com header. deixar assim, se tirar , ficam sublinhadas as palavras */
+    color: black; /* inherit; faz com que o elemento herde a cor do seu elemento pai */
+}
+
+/* DRY */
+
+h2,
+h3 {
+    font-weight: 400;
+}
+
+.menu-btn,
+.mobile-nav {
+    display: none;
+}
+
+
+/* UTILITY CLASSES */
+
+.btn {
+    /* todos os botoes */
+    padding: 0.5rem 1rem; /* largura e comprimento do tamanho do botao */
+    color: white;
+    background-color: var(--main-text-color);
+    box-shadow: 0 2px var(--shadow-text-color);
+    transition: background-color 0.3s ease;
+    display: inline-flex; /* transforma o botão num contêiner flexível. */
+    align-items: center; /* alinha verticalmente o texto no centro. */
+    justify-content: center; /* alinha horizontalmente o texto no centro. */
+    text-decoration: none; /* tira o sublinhado padrão dos <a> */
+}
+
+.btn:hover {
+    background-color: var(--shadow-text-color);
+}
+
+.body-text {
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    line-height: 1.2rem; /* Aumenta o espaçamento entre as linhas para melhorar a leitura */
+    color: var(--body-text);
+    text-align: justify; /* Opcional: centraliza o texto */
+}
+
+.body-text-detail {
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    line-height: 1.2rem;
+    color: var(--body-text);
+    text-align: justify; /* Opcional: centraliza o texto */
+}
+
+/* CUSTOM SYTLES */
+
+/* HEADER */
+
+header {
+    position: fixed; /* position: relative; ainda ocupa o mesmo espaço no layout, mas agora ele pode ser deslocado. */ 
+    top: 0;
+    left: 0;
+    right: 0;
+    align-items: center;
+    padding: 1rem;
+    padding-inline: 5rem; /* afastamentos: Aqui o 0 é para o topo e baixo, e o 20px para as laterais. */
+    color: black; /* aqui dei a cor das letras do header */
+    background-color: white;
+    width: 100%; /* Garante que o header ocupe toda a largura */
+    font-size: 0.9rem;
+    z-index: 1000;
+}
+
+.menu-btn {
+    cursor: pointer; /* ao o rato passar por cima fica com o pointer */
+    background: none; /* tirei o fundo do botao/icon do menu de navegacao */
+    border: none; /* tirei a borda do botao/icon do menu de navegacao */
+    height: 24px; /* tamanho do icon/botao */
+    width: 24px;
+    fill: black; /* dar preenchimento ao botao/icon de branco */
+    transition: fill 0.3s ease; /* quando a propriedade fill mudar, essa mudança será feita ao longo de 0,3 segundos, e a transição será suave (ease), começando devagar, acelerando no meio e desacelerando no final. */
+}
+
+.menu-btn:hover {
+    position: relative;
+    fill: var(--main-text-color) /* sempre que o usuário faz hover (passa o mouse) sobre o botão de menu (menu-btn), a cor de preenchimento (fill) será alterada. */
+}
+
+/* MOBILE NAV */ 
+/* coluna de navegacao quando abrimos o icon do header */
+
+.mobile-nav {
+    position: absolute; /* M U D E I, TINHA FIXED*/
+    z-index: 50;
+    top: 56px;
+    left: 0;
+    width: 100%;
+    padding-top: 2rem; /* espaÃ§amento para nÃ£o sobrepor o header */
+    font-size: 2rem;
+    background-color: white;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+}
+
+.mobile-nav.open {
+    transform: translateX(0%);
+}  
+
+.mobile-nav li {
+    margin-bottom: 2rem;
+}
+
+.mobile-nav a {
+    transition: transform 0.3s ease;
+}
+
+.mobile-nav a:hover{
+    color: var(--main-text-color);
+}
+
+.desktop-nav {
+    display: flex; /* ao dar flex, o header encosta-se acima à esquerda */
+    justify-content: space-between; /* Aqui separou o icon/menu de navegacao entre o nome e o icon, cada um para o seu lado */
+    width: 100%;
+}
+
+.desktop-nav ul {
+    display: flex;
+    gap: 3rem;
+}
+
+.mobile-nav a,
+.desktop-nav a {
+    transition: color 0.3s ease; /* quando a propriedade fill mudar, essa mudança será feita ao longo de 0,3 segundos, e a transição será suave (ease), começando devagar, acelerando no meio e desacelerando no final. */
+}
+
+.mobile-nav a:hover,
+.desktop-nav a:hover {
+    color: var(--main-text-color); /* sempre que o usuário faz hover (passa o mouse) sobre o botão da palavra, a cor de preenchimento (fill) será alterada. */
+}
+
+/* HERO SECTION */
+
+.hero-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Ocupa toda a altura da tela */
+    overflow: hidden;
+}
+
+.hero-text-container {
+    position: absolute; /* <- Posição absoluta em relação ao .hero-container */
+    bottom: 5rem; /* Distância do fundo */
+    left: 0; /* Distância da esquerda */
+    text-align: left;
+    color: var(--main-text-color);
+    font-family: 'Monument Extended Ultrabold';
+    line-height: 0.85;
+    font-weight: normal;
+    font-size: 4rem;
+    letter-spacing: 0.5px;
+    margin-inline: 32px;
+}
+
+/* ABOUT SECTION */
+
+.about-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza o conteúdo horizontalmente */
+    justify-content: space-between;
+    margin-inline: 32px; /* Garante que a seção tenha um espaçamento automático nas laterais */
+    width: 50%; /* Garante que ocupe toda a largura disponível */
+    margin-top: 5rem;
+    margin-bottom: 16rem;
+    scroll-margin-top: 180px; /* ajusta para o tamanho do teu header */
+}
+
+.about-container a {
+    margin: 2rem auto 0; /* 2rem de espaço acima, auto para centro, 0 abaixo */
+    text-align: center;
+    line-height: 1.5; /* Maior espaçamento entre linhas para legibilidade */
+    margin-bottom: 2.5rem;
+}
+
+.about-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* adapta a imagem sem distorcer */
+}
+
+.video-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%; /* % que a foto ocupa de largo na pagina */
+    flex-wrap: wrap; /* Para permitir que o conteúdo se ajuste responsivamente */
+    height: auto;
+    overflow: hidden; /* para garantir que nada ultrapassa */
+}
+
+/* PROJECTS SECTION */
+
+.all-projects-container {
+    display: flex;
+    flex-direction: column; /* Para empilhar o conteúdo verticalmente */
+    align-items: center; /* Centraliza o conteúdo horizontalmente */
+    justify-content: center; /* Se você quiser centralizar verticalmente também */
+    text-align: center; /* Centraliza o texto dentro da seção */
+    width: 95%;
+    scroll-margin-top: 100px; /* ajusta para o tamanho do teu header */
+}
+
+.project-container {
+    display: flex; /* Alinha a imagem e o texto lado a lado */
+    flex-direction: row; /* GARANTE imagem à esquerda, texto à direita */
+    flex-wrap: wrap; /* Para permitir que o conteúdo se ajuste responsivamente */
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    width: 100%; /* Garante que ocupe toda a largura disponível */
+}
+
+.project-container:last-of-type {
+    margin-bottom: 0; /* espaçamento do ultimo projecto ao bottom */
+}
+
+.project-img-container {
+    /* imagens dos projetos */
+    width: 49%; /* % que a foto ocupa de largo na pagina */
+    height: 300px;
+    overflow: hidden; /* para garantir que nada ultrapassa */
+}
+
+.project-img-container img {
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    object-fit: cover; /* adapta a imagem sem distorcer */
+}
+
+.project-text-container {
+    width: 49%; /* O texto ocupa 50% da largura */
+    text-align: justify; /* Justifica o texto */
+    text-align-last: left; /* Garante que o último parágrafo se alinhe à esquerda */
+    line-height: 1.5; /* Maior espaçamento entre linhas para legibilidade */
+    padding: 1rem 0;
+}
+
+.project-techs {
+    margin-bottom: 0.5rem;
+}
+
+.project-techs span {
+    /* aqui sao os icons abaixo de cada imagem do projeto com as linguagens utilizadas */
+    padding: 0.25rem 0.5rem;
+    font-size: 0.7rem;
+    color: white;
+    background-color: var(--main-text-color);
+    margin-right: 0.5rem;
+}
+
+.project-text-container p {
+    margin-bottom: 1rem;
+    font-size: 14px;;
+}
+
+.project-links a {
+    font-size: 14px;
+    margin-right: 1rem;
+}
+
+/* ART SECTION */
+
+.all-art-container {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    scroll-margin-top: 100px; /* ajusta para o tamanho do teu header */
+}
+
+.arts-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    width: 100%;
+}
+
+.art-img-container {
+    /* imagens dos projetos */
+    flex: 0 1 45%; /* ou 40%, depende do tamanho que quiseres */
+    max-width: 45%;
+    height: auto;
+    overflow: hidden;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    margin-top: 6rem;
+}
+
+.art-img-container img {
+    width: 80%;
+    height: auto;
+    object-fit: cover;
+}
+
+.art-container:last-of-type {
+    margin-bottom: 0; /* espaçamento do ultimo projecto ao bottom */
+}
+
+/* CONTACT SECTION */
+
+.contact-container {
+    display: flex; /* Coloca <p> de um lado e botão+icones do outro */
+    justify-content: space-between; /* Espaço entre esquerda e direita */
+    align-items: center; /* Alinha tudo verticalmente ao centro */
+    padding: 2rem; /* Espaçamento interno entre conteudos */
+    gap: 2rem; /* Espaço entre texto e itens */
+    margin-top: 7rem; /* Espaçamento externo acima do elemento */
+    margin-bottom: 1rem; /* Espaçamento externo acima do elemento */
+}
+
+.contact-container p {
+    text-align: left;
+    flex: 1; /* O <p> ocupa o espaço que puder */
+    margin: 0; /* Retira margens padrão */
+    font-family: 'Monument Extended Ultrabold';
+    font-size: 30px;
+    text-align: left;
+    letter-spacing: 0.5px;
+    margin: 0;
+    color: var(--main-text-color);
+}
+
+.contact-btn {
+    display: flex;
+    flex-direction: column; /* Botão em cima, icons em baixo */
+    align-items: center; /* Centraliza o botão e ícones */
+    font-family: 'Monument Extended Ultrabold';
+    font-size: 14px;
+    text-align: left;
+    letter-spacing: 0.5px;
+    margin: 0;
+    color: black;
+    transition: transform 0.3s ease, fill 0.3s ease;
+}
+
+.contact-btn:hover {
+    transform: scale(1.2);
+    fill: var(--shadow-text-color);
+}
+
+.socials-container {
+    display: flex;
+    gap: 1rem;
+}
+
+.socials-container svg {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease, fill 0.3s ease;
+}
+
+.socials-container svg:hover {
+    transform: scale(1.2);
+}
+
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    padding-block: 3rem;
+    font-size: 0.8rem;
+    color: black;
+}
+
+
+/* MEDIA QUERIES */
+
+@media (max-width: 1700px) { 
+    .about-container {
+        scroll-margin-top: 100px; /* ajusta para o tamanho do teu header */
+    }
+
+    .art-img-container {
+        margin-top: 2rem;
+    }
+}
+
+
+@media (max-width: 1130px) { 
+    .menu-btn,
+    .mobile-nav {
+        display: none;
+    }
+
+    /* FONT SIZES & SPACING */
+
+    .hero-text-container {
+        font-size: 3rem;
+        bottom: 3rem;
+    }
+
+    /* ABOUT SECTION */
+
+    .about-container {
+        margin-top: 100px;
+        scroll-margin-top: 100px; /* ajusta para o tamanho do teu header */
+        width: 60%; 
+    }
+
+    .video-container {
+        width: 100%; 
+    } 
+
+    /* PROJECT SECTION */
+
+    .all-projects-container {
+        scroll-margin-top: 100px; /* ajusta para o tamanho do teu header */
+    }
+    
+    .project-container {
+        flex-direction: column; 
+    }
+
+    .project-img-container {
+        max-width: 60%; /* % que a foto ocupa de largo na pagina */
+        width: auto;
+        height: auto;
+    }
+
+    .project-text-container {
+        width: 60%; /* % que a foto ocupa de largo na pagina */
+    }
+
+    /* ART SECTION */
+
+    .all-art-container {
+        margin-top: 4rem;
+    }
+
+    /* CONTACT SECTION */
+
+    .contact-container p {
+        font-size: 1.7rem;
+    }
+}
+  
+
+@media (max-width: 980px) {
+
+    .hero-text-container {
+        font-size: 3rem;
+        bottom: 3rem;
+    }
+    
+    /* ABOUT SECTION */
+
+    .about-container {
+        margin-top: 100px;
+        scroll-margin-top: 100px; /* ajusta para o tamanho do teu header */
+        width: 60%; 
+    }
+
+    .video-container {
+        width: 100%; 
+    } 
+
+    /* PROJECT SECTION */
+
+    .all-projects-container {
+        scroll-margin-top: 100px; /* ajusta para o tamanho do teu header */
+    }
+    
+    .project-container {
+        flex-direction: column; 
+    }
+
+    .project-img-container {
+        /* imagens dos projetos */
+        max-width: 60%; /* % que a foto ocupa de largo na pagina */
+        width: auto;
+        height: auto;
+    }
+
+    .project-text-container {
+        width: 60%; /* % que a foto ocupa de largo na pagina */
+    }
+
+    /* ART SECTION */
+
+    .all-art-container {
+        margin-top: 4rem;
+    }
+
+    /* CONTACT SECTION */
+
+    .contact-container p {
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 710px) {
+
+    .menu-btn,
+    .mobile-nav {
+        display: none;
+    }
+
+    .desktop-nav {
+        display: block;
+    }
+
+    .desktop-nav ul {
+        display: flex;
+        gap: 3rem;
+    }
+
+    /* como por aqui em cima para ficar botao? */
+
+    .hero-text-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        font-size: 1.6rem;
+        max-width: 3rem;
+    }
+
+    .btn {
+        font-size: 14px;
+        display: flex;
+        justify-content: center;
+        padding: 0.2em;
+    }
+
+    /* ABOUT SECTION */
+
+    .about-container {
+        margin-top: 100px;
+        scroll-margin-top: 150px; /* ajusta para o tamanho do teu header */
+        width: 90%; 
+    }
+
+    .video-container {
+        width: 100%; 
+    } 
+
+    /* PROJECT SECTION */
+
+    .all-projects-container {
+        scroll-margin-top: 100px; /* ajusta para o tamanho do teu header */
+    }
+
+    .project-container {
+        flex-direction: column; 
+    }
+
+    .project-img-container {
+        max-width: 90%; /* % que a foto ocupa de largo na pagina */
+        width: auto;
+        height: auto;
+    }
+
+    .project-text-container {
+        width: 90%; /* % que a foto ocupa de largo na pagina */
+    }
+
+    /* ART SECTION */
+
+    .all-art-container {
+        margin-top: 4rem;
+    }
+
+    .art-img-container img{
+        width: 180%;
+    }
+
+    /* CONTACT SECTION */
+
+    .contact-container p {
+        font-size: 1.4rem;
+    }
+    
+
+    /* falta pores o head com o botao */
+}
+
